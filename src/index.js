@@ -17,7 +17,7 @@ import version from 'package.version';
 import Auth0 from 'auth0-js';
 
 export default class Auth0LockPasswordless {
-  constructor(clientID, domain) {
+  constructor(clientID, domain, defaultOptions = {}) {
     if (typeof clientID != "string") {
       throw new Error("A `clientID` string must be provided as first argument.");
     }
@@ -26,7 +26,7 @@ export default class Auth0LockPasswordless {
     }
 
     this.id = idu.incremental();
-    setupLock(this.id, clientID, domain);
+    setupLock(this.id, clientID, domain, defaultOptions);
   }
 
   close() {

@@ -4,8 +4,13 @@ import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '..
 import * as l from './index';
 import * as cs from '../cred/storage';
 
-export function setupLock(id, clientID, domain) {
-  const lock = l.setup({id: id, clientID: clientID, domain: domain});
+export function setupLock(id, clientID, domain, defaultOptions) {
+  const lock = l.setup({
+    id: id,
+    clientID: clientID,
+    domain: domain,
+    defaultOptions: defaultOptions
+  });
   swap(setEntity, "lock", id, lock);
 
   WebAPI.setupClient(id, clientID, domain);

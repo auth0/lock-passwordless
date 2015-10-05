@@ -5,12 +5,13 @@ import * as d from '../dict/index';
 import t from '../dict/t';
 
 export function setup(attrs) {
-  const { clientID, domain, id } = attrs;
+  const { clientID, defaultOptions, domain, id } = attrs;
 
   return Immutable.fromJS({
     clientID: clientID,
     domain: domain,
-    id: id
+    id: id,
+    defaultOptions: defaultOptions
   });
 }
 
@@ -174,6 +175,7 @@ export function render(m, modeName, options) {
     modeOptions: modeOptions
   }));
 
+  options = m.get("defaultOptions").mergeDeep(Immutable.fromJS(options)).toJS();
   m = setUIOptions(m, options);
   m = setLoginOptions(m, options);
 

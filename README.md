@@ -105,6 +105,7 @@ Initializes a new instance of `Auth0LockPasswordless` configured with your appli
 
 - **clientID {String}**: Your application _clientID_ in Auth0.
 - **domain {String}**: Your Auth0 _domain_. Usually _your-account.auth0.com_.
+- **options {Object}**: Allows to customize the dialog's appearance and behavior. See [below](#customization) for the details.
 
 You can find this information at your [application settings](https://manage.auth0.com/#/applications).
 
@@ -283,14 +284,14 @@ lock.logout({ref: window.location.href});
 
 ### Customization
 
-The appearance of the widget and the mechanics of authentication can be customized with an `options` object which has one or more of the following properties. Each method that opens the dialog can take an `options` object as its first argument.
+The appearance of the widget and the mechanics of authentication can be customized with an `options` object which has one or more of the following properties. The `Auth0LockPasswordless` constructor and each method that opens the dialog can take an `options` object. Options passed to an opening method take precedence over options passed to the constructor.
 
 #### UI options
 
 - **autoclose {Boolean}**: Determines whether or not the Lock will be closed automatically after a successful sign in. If the Lock is not `closable` it won't be closed even if this option is set to `true`. Defaults to `false`.
 - **container {String}**: The `id` of the html element where the Lock will be rendered. This makes the Lock appear inline instead of in a modal window.
 - **dict {Object}**: Allows to customize every piece of text displayed in the Lock. Defaults to `{}`. See below [Dict Specification](#dict-specification) for the details.
-- **icon {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo.
+- **icon {String}**: Url for an image that will be placed in the Lock's header. Defaults to Auth0's logo. If you are going to use a custom icon is recommended that you specify this option when constructing a new `Auth0LockPasswordless` instance because that give us the chance to preload the image and provide a better user experience.
 - **closable {Boolean}**: Determines whether or not the Lock can be closed. When a `container` option is provided its value is always `false`, otherwise it defaults to `true`.
 - **defaultLocation {String}**: [ISO country code](http://www.iso.org/iso/country_codes) of the country that will be selected by default when entering a phone number. Defaults to `"US"`.
 - **focusInput {Boolean}**: Determines whether or not the first input on the screen, that is the email or phone number input, should have focus when the Lock is displayed. Defaults to `false` when a `container` option is provided or the Lock is being render on a mobile device. Otherwise it defaults to `true`.

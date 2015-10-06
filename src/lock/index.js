@@ -177,7 +177,7 @@ export function render(m, modeName, options) {
     modeOptions: modeOptions
   }));
 
-  options = m.get("defaultOptions").mergeDeep(Immutable.fromJS(options)).toJS();
+  options = m.get("defaultOptions").merge(Immutable.fromJS(options)).toJS();
   m = setUIOptions(m, options);
   m = setLoginOptions(m, options);
 

@@ -4,13 +4,16 @@ import { iconUrl } from '../icon/index';
 import * as d from '../dict/index';
 import t from '../dict/t';
 
+export const DEFAULT_ICON_URL = "//cdn.auth0.com/styleguide/1.0.0/img/badge.png";
+
 export function setup(attrs) {
-  const { clientID, domain, id } = attrs;
+  const { clientID, defaultOptions, domain, id } = attrs;
 
   return Immutable.fromJS({
     clientID: clientID,
     domain: domain,
-    id: id
+    id: id,
+    defaultOptions: defaultOptions
   });
 }
 
@@ -79,7 +82,7 @@ function extractUIOptions(id, options) {
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
     autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
-    icon: options.icon || "//cdn.auth0.com/styleguide/1.0.0/img/badge.png",
+    icon: options.icon || DEFAULT_ICON_URL,
     closable: closable,
     dict: d.build(dictName, typeof options.dict === "object" ? options.dict : {}),
     focusInput: undefined === options.focusInput ? !(options.container || isSmallScreen()) : !!options.focusInput,
@@ -174,6 +177,7 @@ export function render(m, modeName, options) {
     modeOptions: modeOptions
   }));
 
+  options = m.get("defaultOptions").merge(Immutable.fromJS(options)).toJS();
   m = setUIOptions(m, options);
   m = setLoginOptions(m, options);
 

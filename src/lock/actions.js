@@ -3,9 +3,18 @@ import WebAPI from './web_api';
 import { getEntity, read, removeEntity, swap, setEntity, updateEntity } from '../store/index';
 import * as l from './index';
 import * as cs from '../cred/storage';
+import * as preload from '../preload/index';
 
-export function setupLock(id, clientID, domain) {
-  const lock = l.setup({id: id, clientID: clientID, domain: domain});
+export function setupLock(id, clientID, domain, defaultOptions) {
+  const icon = defaultOptions && defaultOptions.icon;
+  preload.img((icon && typeof icon === "string") ? icon : l.DEFAULT_ICON_URL);
+
+  const lock = l.setup({
+    id: id,
+    clientID: clientID,
+    domain: domain,
+    defaultOptions: defaultOptions
+  });
   swap(setEntity, "lock", id, lock);
 
   WebAPI.setupClient(id, clientID, domain);

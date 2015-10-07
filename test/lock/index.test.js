@@ -8,6 +8,7 @@ let lock;
 const clientID = "someClientID";
 const lockID = "someLockID";
 const domain = "tenant.auth0.com";
+const defaultOptions = {};
 
 describe("initializing a lock", function() {
   beforeEach(function() {
@@ -15,6 +16,7 @@ describe("initializing a lock", function() {
       clientID: clientID,
       domain: domain,
       id: lockID,
+      defaultOptions: defaultOptions,
       nonexistent: "nonexistent"
     });
   });
@@ -29,6 +31,10 @@ describe("initializing a lock", function() {
 
   it("sets the domain", function() {
     expect(l.domain(lock)).to.be(domain);
+  });
+
+  it("sets the default options domain", function() {
+    expect(lock.get("defaultOptions").toJS()).to.eql(defaultOptions);
   });
 
   it("doesn't set unknown attributes", function() {
@@ -62,7 +68,12 @@ describe("rendering a lock", function() {
   const modeOptions = {someModeOption: "someModeOption"};
 
   beforeEach(function() {
-    lock = l.setup({clientID: clientID, domain: domain, id: lockID});
+    lock = l.setup({
+      clientID: clientID,
+      domain: domain,
+      id: lockID,
+      defaultOptions: defaultOptions
+    });
     renderedLock = l.render(lock, mode, {modeOptions: modeOptions});
   });
 
@@ -218,7 +229,12 @@ describe("rerendering a lock", function() {
   // const modeOptions = {someModeOption: "someModeOption"};
 
   beforeEach(function() {
-    lock = l.setup({clientID: clientID, domain: domain, id: lockID});
+    lock = l.setup({
+      clientID: clientID,
+      domain: domain,
+      id: lockID,
+      defaultOptions: defaultOptions
+    });
     renderedLock = l.render(lock, mode, {});
     reRenderedLock = l.render(renderedLock, mode, {});
   });
@@ -340,7 +356,12 @@ describe("trying to render a lock that is being shown", function() {
   const mode = "someMode";
 
   beforeEach(function() {
-    lock = l.setup({clientID: clientID, domain: domain, id: lockID});
+    lock = l.setup({
+      clientID: clientID,
+      domain: domain,
+      id: lockID,
+      defaultOptions: defaultOptions
+    });
     openedLock = l.setShow(l.render(lock, mode, {}), true);
     reRenderedLock = l.render(openedLock, mode, {gravatar: false});
   });
@@ -355,7 +376,12 @@ describe("submitting", function() {
   const globalError = "Something went wrong.";
 
   beforeEach(function() {
-    lock = l.setup({clientID: clientID, domain: domain, id: lockID});
+    lock = l.setup({
+      clientID: clientID,
+      domain: domain,
+      id: lockID,
+      defaultOptions: defaultOptions
+    });
     lockWithGlobalError = l.setGlobalError(lock, globalError);
     submittingLock = l.setSubmitting(lockWithGlobalError, true);
   });
@@ -423,7 +449,12 @@ describe("accessing Gravatar info", function() {
   let renderedLock;
 
   beforeEach(function() {
-    lock = l.setup({clientID: clientID, domain: domain, id: lockID});
+    lock = l.setup({
+      clientID: clientID,
+      domain: domain,
+      id: lockID,
+      defaultOptions: defaultOptions
+    });
   });
 
   describe("when it has to be displayed", function() {

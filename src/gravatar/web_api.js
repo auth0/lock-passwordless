@@ -1,7 +1,9 @@
-import { md5 } from 'blueimp-md5';
+import blueimp from 'blueimp-md5';
 import { validateEmail } from '../cred/index';
 import jsonp from '../utils/jsonp_utils';
 import * as preload from '../preload/index';
+
+const md5 = blueimp.md5 || blueimp;
 
 export function profile(email, success, error) {
   if (validateEmail(email)) {

@@ -1,3 +1,10 @@
+## [2.2.2] - 2016-01-29
+
+### Fixed
+
+- Fix webpack bundling.
+- Dependencies on the `0.14.x` range of React packages. Otherwise we are forcing users to use a specific version of React.
+
 ## [2.2.1] - 2016-01-18
 
 ### Changed

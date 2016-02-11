@@ -8,6 +8,8 @@
 
 [Auth0](https://auth0.com) Lock Passwordless is a professional looking dialog that allows users to log in by receiving a one-time password via email or text message. It also supports social providers.
 
+This library has been designed to work in a browser. Lock libraries for [iOS](https://github.com/auth0/Lock.iOS-OSX) and [Android](https://github.com/auth0/Lock.Android) which support passwordless authentication are also available.
+
 ## Playground
 
 You can try it out yourself online at the [playground](https://auth0.github.io/lock-passwordless/).

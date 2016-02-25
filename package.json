@@ -20,6 +20,7 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "grunt dev",
+    "deploy": "./bin/deploy",
     "build": "grunt build",
     "design": "grunt design",
     "dist": "grunt dist",

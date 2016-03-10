@@ -86,5 +86,6 @@ Auth0LockPasswordless.plugins.register(socialOrSmsSpec);
 
 // telemetry
 Auth0LockPasswordless.version = __VERSION__;
-Auth0.clientInfo.name +=  " (LockPasswordless)";
-Auth0.clientInfo.version += ` (${__VERSION__})`;
+Auth0.clientInfo.lib_version = Auth0.clientInfo.version;
+Auth0.clientInfo.name =  "lock-passwordless.js";
+Auth0.clientInfo.version = Auth0LockPasswordless.version;

@@ -1,3 +1,10 @@
+## [2.2.3] - 2016-03-28
+
+### Fixed
+
+- Fix bug that prevented the widget to show up when a property was added to `String.prototype` ([#105](https://github.com/auth0/lock-passwordless/pull/105))
+
+
 ## [2.2.2] - 2016-01-29
 
 ### Fixed

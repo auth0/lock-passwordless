@@ -10,7 +10,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "auth0-lock-passwordless": "file:../../../"
+    "auth0-lock-passwordless": "2.2.3"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",

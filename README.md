@@ -71,12 +71,11 @@ $(document).ready(function(){
 
 ## Install
 
-From CDN
+You can obtain Lock Passwordless from our CDN, from [bower](http://bower.io) or from [npm](https://npmjs.org).
+
+### CDN
 
 ```html
-<!-- Latest major release -->
-<script src="http://cdn.auth0.com/js/lock-passwordless-2.min.js"></script>
-
 <!-- Latest minor release -->
 <script src="http://cdn.auth0.com/js/lock-passwordless-2.2.min.js"></script>
 
@@ -84,7 +83,7 @@ From CDN
 <script src="http://cdn.auth0.com/js/lock-passwordless-2.2.2.min.js"></script>
 ```
 
-From [bower](http://bower.io)
+### Bower
 
 ```sh
 bower install auth0-lock-passwordless
@@ -94,15 +93,16 @@ bower install auth0-lock-passwordless
 <script src="bower_components/auth0-lock-passwordless/dist/auth0-lock-passwordless.min.js"></script>
 ```
 
-From [npm](https://npmjs.org)
+### NPM
 
 ```sh
-npm install auth0-lock-passwordless
+npm install --save auth0-lock-passwordless
 ```
 
-After installing the `auth0-lock-passwordless` module, you'll need bundle it up along with all of its dependencies. We have examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
+After installing the `auth0-lock-passwordless` module, you'll need bundle it up. We have examples for [browserify](examples/bundling/browserify/) and [webpack](examples/bundling/webpack/).
 
-If you are targeting mobile audiences, it's recommended that you add:
+
+Finally, if you are targeting mobile audiences, it's recommended that you add:
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>

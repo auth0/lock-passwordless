@@ -33,7 +33,7 @@ export default class Chrome extends React.Component {
 
     const gravatar = l.gravatar(lock);
     const icon = l.ui.icon(lock);
-    const globalError = l.globalError(lock);
+    const globalError = l.globalError(lock) || null;
     const disableSubmit = l.submitting(lock);
 
     let backgroundUrl, name;

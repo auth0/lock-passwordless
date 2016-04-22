@@ -90,7 +90,7 @@ bower install auth0-lock-passwordless
 ```
 
 ```html
-<script src="bower_components/auth0-lock-passwordless/dist/auth0-lock-passwordless.min.js"></script>
+<script src="bower_components/auth0-lock-passwordless/build/lock-passwordless.min.js"></script>
 ```
 
 ### NPM

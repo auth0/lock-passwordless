@@ -97,7 +97,7 @@ pre code.hljs {
   .coffeescript .property {
     color: #ffa0e7; // pink
   }
-    
+
   .id,
   .phpdoc,
   .built_in,
@@ -127,7 +127,7 @@ pre code.hljs {
   .xml .vbscript,
   .xml .css,
   .xml .cdata {
-    opacity: 1;  
+    opacity: 1;
   }
 }
 
@@ -200,12 +200,12 @@ body {
 
 // site header
 .site-header {
-  padding: 20px 0; 
+  padding: 20px 0;
 }
 
 header.site-header.site-header .dropdown .dropdown-menu {
   background-color: transparent;
-  
+
   @media (min-width: 992px) {
     background-color: #fff;
   }
@@ -219,17 +219,36 @@ header.site-header.site-header .dropdown .dropdown-menu {
   overflow: hidden;
 
   @media (min-width: 768px) {}
-  
+
   .breadcrumb {
     background-color: #fff;
     border-radius: 3px;
     margin-bottom: 0;
     text-align: center;
-    
+    padding-bottom: 20px;
+
     @media (min-width: 768px) {
       text-align: left;
+      padding: 20px;
     }
-    
+
+    li {
+      list-style: none;
+      display: inline-block;
+
+      i {
+        font-size: 12px;
+        margin: 0;
+        position: relative;
+        top: 3px;
+        margin-left: 7px;
+        margin-right: 5px;
+        opacity: .5;
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+
     a {
       color: rgba(0, 0, 0, 0.5);
 
@@ -238,22 +257,21 @@ header.site-header.site-header .dropdown .dropdown-menu {
         color: shade(rgba(0, 0, 0, 0.5), 30%);
       }
     }
-    
+
     > .active {
       color: rgba(0, 0, 0, 0.7);
     }
   }
-  
+
   h2 {
     background-color: #fff;
     font-size: 16px;
     margin: 0;
-    padding: 25px 15px 0 15px;
+    padding: 20px;
     text-align: center;
-    
+
     @media (min-width: 768px) {
       float: right;
-      padding-top: 24px;
     }
 
     img {
@@ -292,7 +310,7 @@ header.site-header.site-header .dropdown .dropdown-menu {
       }
     }
   }
-  
+
   a {
     color: #4a90e2;
 
@@ -301,11 +319,11 @@ header.site-header.site-header .dropdown .dropdown-menu {
       color: shade(#4a90e2, 30%);
     }
   }
-  
+
   // nav-tabs
   .nav.nav-tabs {
     font-size: 14px;
-    margin: 0 -20px;
+    margin: 0 -20px 20px;
     padding-right: 20px;
     padding-left: 20px;
 
@@ -336,7 +354,7 @@ header.site-header.site-header .dropdown .dropdown-menu {
     color: #000;
     outline: 0;
   }
-  
+
   // button "Open Me!"
   .btn.btn-primary,
   a.btn.btn-primary {
@@ -347,14 +365,14 @@ header.site-header.site-header .dropdown .dropdown-menu {
     &:hover {
       background-color: rgba(255, 255, 255, .2);
     }
-    
+
     &:focus {
       color: #797979;
     }
   }
-  
+
   // button try
-  .btn.btn-success, 
+  .btn.btn-success,
   a.btn.btn-success {
 
     &:focus {
@@ -442,33 +460,26 @@ pre {
 .form-group-checkbox {
   padding-top: 12px;
   padding-bottom: 12px;
-
-  @media (min-width: 768px) {
-    margin-bottom: 28px;
-  }
+  margin-top: 0px;
 
   @media (min-width: 992px) {
-    margin-top: 0;
     margin-bottom: 0;
   }
 
   input[type="radio"],
   input[type="checkbox"] {
     float: right;
+    margin-top: 0px;
 
     @media (min-width: 768px) {
       float: left;
-      margin-top: 2px;
       margin-right: 10px;
     }
   }
 
   .control-label {
     float: left;
-
-    @media (min-width: 768px) {
-      line-height: inherit;
-    }
+    line-height: 1;
   }
 }
 
@@ -576,9 +587,9 @@ pre {
 }
 
 .lock-container-box {
-  padding-top: 0; 
+  padding-top: 0;
   padding-bottom: 0;
-  
+
   @media (min-width: 768px) {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -594,25 +605,25 @@ pre {
   overflow: hidden;
   padding: 10px 0;
   position: relative;
-  
+
   @media (min-width: 350px) {
     margin-right: -20px;
     margin-left: -20px;
   }
-  
+
   @media (min-width: 768px) {
     margin-right: 0;
     margin-left: 0;
   }
 
   @media (min-width: 992px) {
-    padding: 25px 0;  
+    padding: 25px 0;
   }
-  
+
   .btn {
     margin: 0 auto;
     width: 300px;
-    
+
     @media (min-width: 992px) {
       float: right;
       margin: 0 25px 0 0;
@@ -633,15 +644,19 @@ footer.site-footer {
   margin-top: 15px;
   padding: 20px 0;
   text-align: center;
-  
+
   @media (min-width: 568px) {
     padding: 80px 0;
   }
-  
+
   @media (min-width: 768px) {
     margin-top: 0;
   }
-  
+
+  a {
+    color: #fff;
+  }
+
   p {
     font-size: 16px;
     line-height: 1.4;
@@ -649,7 +664,7 @@ footer.site-footer {
     margin-bottom: 20px;
     text-transform: uppercase;
     vertical-align: middle;
-    
+
     @media (min-width: 768px) {
       margin-bottom: 20px;
       margin: 0 20px 0 0;

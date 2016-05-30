@@ -81,7 +81,7 @@ function extractUIOptions(id, modeName, options) {
     containerID: options.container || `auth0-lock-container-${id}`,
     appendContainer: !options.container,
     autoclose: undefined === options.autoclose ? false : closable && options.autoclose,
-    icon: options.icon || "//cdn.auth0.com/styleguide/1.0.0/img/badge.png",
+    icon: options.icon || "//cdn.auth0.com/styleguide/4.6.1/lib/logos/img/badge.png",
     closable: closable,
     connections: new List(undefined === options.connections ? [] : options.connections),
     dict: d.build(modeName, typeof options.dict === "object" ? options.dict : {}),

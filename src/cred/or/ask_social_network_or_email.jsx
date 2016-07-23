@@ -29,6 +29,7 @@ export default class AskSocialNetworkOrEmail extends Screen {
         <SocialButtonsPane
           lock={lock}
           smallButtonsHeader={this.t(lock, ["smallSocialButtonsHeader"], {__textOnly: true})}
+          bigButtonsPrefix={this.t(lock, ["bigSocialButtonsPrefix"], {__textOnly: true})}
         />
         <PaneSeparator>{this.t(lock, ["separatorText"])}</PaneSeparator>
         <EmailPane

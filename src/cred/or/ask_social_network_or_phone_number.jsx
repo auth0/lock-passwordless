@@ -23,6 +23,7 @@ export default class AskSocialNetworkOrPhoneNumber extends Base {
       <div>
         <SocialButtonsPane
           lock={lock}
+          t={this.t.bind(this)}
           smallButtonsHeader={this.t(lock, ["smallSocialButtonsHeader"], {__textOnly: true})}
         />
         <PaneSeparator>{this.t(lock, ["separatorText"])}</PaneSeparator>

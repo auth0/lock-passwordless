@@ -79,7 +79,8 @@ export default {
     network: {
       footerText: "",
       headerText: "",
-      smallSocialButtonsHeader: "Login with"
+      smallSocialButtonsHeader: "Login with",
+      socialButtonLabel: "Login with {provider}"
     },
     signedIn: {
       success: "Thanks for signing in."
@@ -98,7 +99,8 @@ export default {
       footerText: "",
       headerText: "",
       separatorText: "Otherwise, enter your email to sign in<br>or create an account",
-      smallSocialButtonsHeader: "Login with"
+      smallSocialButtonsHeader: "Login with",
+      socialButtonLabel: "Login with {provider}"
     },
     signedIn: {
       success: "Thanks for signing in."
@@ -120,7 +122,8 @@ export default {
       footerText: "",
       headerText: "",
       separatorText: "Otherwise, enter your email to sign in<br>or create an account",
-      smallSocialButtonsHeader: "Login with"
+      smallSocialButtonsHeader: "Login with",
+      socialButtonLabel: "Login with {provider}"
     },
     signedIn: {
       success: "Thanks for signing in."
@@ -146,7 +149,8 @@ export default {
       headerText: "",
       phoneNumberInputPlaceholder: "your phone number",
       separatorText: "Otherwise, enter your phone to sign in<br>or create an account",
-      smallSocialButtonsHeader: "Login with"
+      smallSocialButtonsHeader: "Login with",
+      socialButtonLabel: "Login with {provider}"
     },
     title: "Auth0",
     welcome: "Welcome {name}!"

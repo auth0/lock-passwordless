@@ -1,11 +1,11 @@
 import React from 'react';
 import SocialButton from './social_button';
 import * as l from '../../lock/index';
-import { useBigButtons } from '../../social/index';
+import { displayName, useBigButtons } from '../../social/index';
 export default class SocialButtonsPane extends React.Component {
 
   render() {
-    const { lock, showLoading, smallButtonsHeader, bigButtonsPrefix } = this.props;
+    const { lock, t, showLoading, smallButtonsHeader } = this.props;
 
     const header = !useBigButtons(lock)
       && smallButtonsHeader
@@ -14,7 +14,12 @@ export default class SocialButtonsPane extends React.Component {
          </p>;
 
     const buttons = l.ui.connections(lock).map(x => (
-      <SocialButton key={x.name} connection={x} lock={lock} bigButtonsPrefix={bigButtonsPrefix} />
+      <SocialButton
+        key={x.name}
+        connection={x}
+        lock={lock}
+        socialButtonLabel={t(lock, ["socialButtonLabel"], {provider: displayName(x), __textOnly: true})}
+      />
     ));
 
     const loading = showLoading
@@ -37,7 +42,7 @@ SocialButtonsPane.propTypes = {
   lock: React.PropTypes.object.isRequired,
   showLoading: React.PropTypes.bool.isRequired,
   smallButtonsHeader: React.PropTypes.string,
-  bigButtonsPrefix: React.PropTypes.string
+  socialButtonLabel: React.PropTypes.string
 };
 
 SocialButtonsPane.defaultProps = {

@@ -80,7 +80,7 @@ export default {
       footerText: "",
       headerText: "",
       smallSocialButtonsHeader: "Login with",
-      bigSocialButtonsPrefix: "Login with"
+      socialButtonLabel: "Login with {provider}"
     },
     signedIn: {
       success: "Thanks for signing in."
@@ -100,7 +100,7 @@ export default {
       headerText: "",
       separatorText: "Otherwise, enter your email to sign in<br>or create an account",
       smallSocialButtonsHeader: "Login with",
-      bigSocialButtonsPrefix: "Login with"
+      socialButtonLabel: "Login with {provider}"
     },
     signedIn: {
       success: "Thanks for signing in."
@@ -123,7 +123,7 @@ export default {
       headerText: "",
       separatorText: "Otherwise, enter your email to sign in<br>or create an account",
       smallSocialButtonsHeader: "Login with",
-      bigSocialButtonsPrefix: "Login with"
+      socialButtonLabel: "Login with {provider}"
     },
     signedIn: {
       success: "Thanks for signing in."
@@ -150,7 +150,7 @@ export default {
       phoneNumberInputPlaceholder: "your phone number",
       separatorText: "Otherwise, enter your phone to sign in<br>or create an account",
       smallSocialButtonsHeader: "Login with",
-      bigSocialButtonsPrefix: "Login with"
+      socialButtonLabel: "Login with {provider}"
     },
     title: "Auth0",
     welcome: "Welcome {name}!"

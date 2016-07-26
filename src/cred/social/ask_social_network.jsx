@@ -18,9 +18,9 @@ export default class AskSocialNetwork extends Screen {
     return(
       <SocialButtonsPane
         lock={lock}
+        t={this.t.bind(this)}
         showLoading={true}
         smallButtonsHeader={this.t(lock, ["smallSocialButtonsHeader"], {__textOnly: true})}
-        bigButtonsPrefix={this.t(lock, ["bigSocialButtonsPrefix"], {__textOnly: true})}
       />
     );
   }

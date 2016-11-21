@@ -1,9 +1,10 @@
-.auth0-lock
+.auth0-lock-passwordless
   @require "normalize"
 
-@require "animate.css"
-@require "transitions.css"
-@require "social_icons.css"
+.auth0-lock-passwordless
+  @require "animate.css"
+  @require "transitions.css"
+  @require "social_icons.css"
 
 // Breakpoints mixin
 breakpoint(point, value = 0)
@@ -45,7 +46,7 @@ breakpoint(point, value = 0)
 // Lock base style
 
 
-.auth0-lock.auth0-lock
+.auth0-lock-passwordless
   &, *
     -webkit-box-sizing initial
     -moz-box-sizing initial
@@ -78,7 +79,7 @@ breakpoint(point, value = 0)
       -webkit-transform none
       transform none
 
-.auth0-lock.auth0-lock
+.auth0-lock-passwordless
   font-family "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, Roboto, Hevetica, sans-serif
   text-rendering optimizeLegibility
   pointer-events none

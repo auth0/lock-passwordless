@@ -38,7 +38,7 @@ export default class Lock extends React.Component {
     const gravatar = l.gravatar(lock);
     const showCloseButton = l.ui.closable(lock) && !disallowClose;
 
-    let className = "auth0-lock";
+    let className = "auth0-lock-passwordless";
     if (!l.ui.appendContainer(lock)) {
       className += " auth0-lock-opened-in-frame";
     } else if (lock.get("show")) {

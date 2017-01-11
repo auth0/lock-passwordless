@@ -430,3 +430,111 @@ describe("accessing a vcode", function() {
     });
   });
 });
+
+const invalidUsername = "someone@auth0.com";
+const username = "abc";
+
+describe("setting an username", function() {
+  let entity;
+
+  describe("when is valid", function() {
+    beforeEach(function() {
+      entity = c.setUsername(emptyEntity, username);
+    });
+
+    it("updates the username", function() {
+      expect(c.username(entity)).to.be(username);
+    });
+
+    it("marks the username as valid", function() {
+      expect(c.validUsername(entity)).to.be(true);
+    });
+
+    it("unmarks the username as visibly invalid", function() {
+      expect(c.visiblyInvalidUsername(entity)).to.be(false);
+    });
+  });
+
+  describe("when is invalid", function() {
+    beforeEach(function() {
+      entity = c.setUsername(emptyEntity, invalidUsername);
+    });
+
+    it("updates the username", function() {
+      expect(c.username(entity)).to.be(invalidUsername);
+    });
+
+    it("unmarks the username as valid", function() {
+      expect(c.validUsername(entity)).to.be(false);
+    });
+  });
+
+  describe("when marked as visibly invalid", function() {
+    beforeEach(function() {
+      entity = c.setShowInvalidUsername(emptyEntity, true);
+    });
+
+    describe("and is valid", function() {
+      beforeEach(function() {
+        entity = c.setUsername(entity, username);
+      });
+
+      it("unmarks the username as visibly invalid", function() {
+        expect(c.visiblyInvalidUsername(entity)).to.be(false);
+      });
+    });
+
+    describe("and is invalid", function() {
+      beforeEach(function() {
+        entity = c.setUsername(entity, invalidUsername);
+      });
+
+      it("unmarks the username as visibly invalid", function() {
+        expect(c.visiblyInvalidUsername(entity)).to.be(false);
+      });
+    });
+  });
+});
+
+describe("validating an username", function() {
+  let entity;
+
+  it("success when it's simple alphanumeric + some signs", function() {
+    entity = c.setUsername(emptyEntity, "someone-auth0.c+o_m");
+    expect(c.validUsername(entity)).to.be(true);
+  });
+
+  it("fails when the @ is present", function() {
+    entity = c.setUsername(emptyEntity, "someone@auth0.com");
+    expect(c.validUsername(entity)).to.be(false);
+  });
+
+  it("fails when it is the empty string", function() {
+    entity = c.setUsername(emptyEntity, "");
+    expect(c.validUsername(entity)).to.be(false);
+  });
+});
+
+describe("accessing an username", function() {
+  let entity;
+
+  describe("when is set", function() {
+    beforeEach(function() {
+      entity = c.setUsername(emptyEntity, username);
+    });
+
+    it("returns the username", function() {
+      expect(c.username(entity)).to.be(username);
+    });
+  });
+
+  describe("when is not set", function() {
+    beforeEach(function() {
+      entity = emptyEntity;
+    });
+
+    it("returns the empty string", function() {
+      expect(c.username(entity)).to.be("");
+    });
+  });
+});

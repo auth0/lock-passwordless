@@ -8,6 +8,7 @@ import webAPI from './lock/web_api';
 import emailcodeSpec from './mode/emailcode/spec';
 import magiclinkSpec from './mode/magiclink/spec';
 import smsSpec from './mode/sms/spec';
+import guardianSpec from './mode/guardian/spec';
 import socialSpec from './mode/social/spec';
 import socialOrEmailcodeSpec from './mode/social-or-emailcode/spec';
 import socialOrMagiclinkSpec from './mode/social-or-magiclink/spec';
@@ -78,6 +79,7 @@ Auth0LockPasswordless.renderScheduler = new RenderScheduler(Auth0LockPasswordles
 Auth0LockPasswordless.plugins.register(emailcodeSpec);
 Auth0LockPasswordless.plugins.register(magiclinkSpec);
 Auth0LockPasswordless.plugins.register(smsSpec);
+Auth0LockPasswordless.plugins.register(guardianSpec);
 Auth0LockPasswordless.plugins.register(socialSpec);
 Auth0LockPasswordless.plugins.register(socialOrEmailcodeSpec);
 Auth0LockPasswordless.plugins.register(socialOrMagiclinkSpec);

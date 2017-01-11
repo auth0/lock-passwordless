@@ -38,6 +38,14 @@ export default {
       "lock.unauthorized": "Permissions were not granted. Try again."
     }
   },
+  guardian: {
+    username: {
+      usernameInputPlaceholder: "Your username",
+      footerText: "",
+      headerText: "Enter your Guardian username to sign in<br>or create an account"
+    },
+    title: "Auth0"
+  },
   magiclink: {
     emailSent: {
       failedLabel: "Failed!",

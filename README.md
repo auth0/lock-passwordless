@@ -231,6 +231,24 @@ lock.sms({closable: false}, function(error, profile, id_token, access_token, sta
 lock.sms({callbackURL: "http://mydomain/callback"});
 ```
 
+### .guardian(options, callback)
+
+Opens a dialog that asks the user for a username. Once entered, it will redirect to a page handling the Guardian authentication.
+
+- **options {Object}**: Allows to customize the dialog's appearance and behavior. See [below](#customization) for the details.
+- **callback {Function}**: Will be invoked only in popup mode which is discouraged. See [below](#popup-mode) for the caveats.
+
+#### Example
+
+```javascript
+// invoke guardian without options or callback
+lock.guardian();
+
+// invoke guardian with an option that prevents the user from closing the
+// dialog
+lock.guardian({closable: false});
+```
+
 ### .social(options, callback)
 
 Opens a dialog with buttons to authenticate with the specified social providers.

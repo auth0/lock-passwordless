@@ -66,6 +66,13 @@ body {
 
 <div class="container">
   <div class="info">
+    <h2>guardian</h2>
+  </div>
+  <div class="lock-container" id="guardian-container"></div>
+</div>
+
+<div class="container">
+  <div class="info">
     <h2>social</h2>
   </div>
   <div class="lock-container" id="social-container"></div>
@@ -120,6 +127,11 @@ magiclinkLock.magiclink({
 var smsLock = new Auth0LockPasswordless(cid, domain);
 smsLock.sms({
   container: "sms-container"
+});
+
+var guardianLock = new Auth0LockPasswordless(cid, domain);
+guardianLock.guardian({
+  container: "guardian-container"
 });
 
 var socialLock = new Auth0LockPasswordless(cid, domain);

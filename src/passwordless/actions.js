@@ -108,6 +108,40 @@ export function sendSMSError(id, error) {
   swap(updateEntity, "lock", id, l.setSubmitting, false, errorMessage);
 }
 
+export function requestGuardianLogin(id) {
+  swap(updateEntity, "lock", id, lock => {
+    if (c.validUsername(lock)) {
+      return l.setSubmitting(lock, true);
+    } else {
+      return c.setShowInvalidUsername(lock);
+    }
+  });
+
+  const lock = read(getEntity, "lock", id);
+
+  const options = {
+    callbackURL: l.login.callbackURL(lock),
+    connection: "guardian",
+    forceJSONP: l.login.forceJSONP(lock),
+    login_hint: c.username(lock),
+    popup: l.ui.popup(lock),
+    popupOptions: l.ui.popupOptions(lock),
+    redirect: l.shouldRedirect(lock),
+    responseType: l.login.responseType(lock)
+  };
+  webApi.signIn(
+    id,
+    Map(options).merge(l.login.authParams(lock)).toJS(),
+    (error, ...args) => {
+      if (error) {
+        setTimeout(() => signInError(id, error), 250);
+      } else {
+        signInSuccess(id, ...args);
+      }
+    }
+  );
+}
+
 export function resendEmail(id) {
   swap(updateEntity, "lock", id, m.resend);
 

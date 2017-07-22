@@ -23,7 +23,7 @@ export function signIn(id, connection) {
     options.display = "popup";
   }
 
-  WebAPI.signIn(id, options,  (error, ...args) => {
+  WebAPI.socialSignIn(id, options,  (error, ...args) => {
     if (error) {
       setTimeout(() => signInError(id, error), 250);
     } else {

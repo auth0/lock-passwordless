@@ -1,4 +1,4 @@
-import Auth0 from 'auth0-js';
+import auth0 from 'auth0-js';
 import reqwest from 'reqwest';
 import * as StringUtils from '../utils/string_utils';
 
@@ -7,25 +7,38 @@ class Auth0WebAPI {
     this.clients = {};
   }
 
-  setupClient(lockID, clientID, domain) {
-    // TODO: reuse clients
-    this.clients[lockID] = new Auth0({
+  setupClient(lockID, clientID, domain, options) {
+    const default_telemetry = {
+      name: 'lock-passwordless.js',
+      version: __VERSION__,
+      lib_version: auth0.version
+    };
+    this.clients[lockID] = new auth0.WebAuth({
       clientID: clientID,
       domain: domain,
-      sendSDKClientInfo: true
+      _sendTelemetry: options._sendTelemetry === false ? false : true,
+      _telemetryInfo: options._telemetryInfo || default_telemetry,
+      audience: options.audience,
+      redirectUri: options.redirectUri,
+      responseMode: options.responseMode,
+      responseType: options.responseType,
+      leeway: options.leeway || 1,
+      ...options
     });
   }
 
   signIn(lockID, options, cb) {
-    const { redirect } = options;
-    const f = loginCallback(redirect, cb);
+    const f = loginCallback(cb);
     const client = this.clients[lockID];
 
-    transferLoginOptionsToClient(client, options);
+    client.passwordlessVerify(options, f);
+  }
 
-    delete options.redirect;
+  socialSignIn(lockID, options, cb) {
+    const f = loginCallback(cb);
+    const client = this.clients[lockID];
 
-    client.login(options, f);
+    client.authorize(options, f);
   }
 
   signOut(lockID, query) {
@@ -34,13 +47,12 @@ class Auth0WebAPI {
 
   startPasswordless(lockID, options, cb) {
     const client = this.clients[lockID];
-    transferLoginOptionsToClient(client, options);
 
-    client.startPasswordless(options, err => cb(normalizeError(err)));
+    client.passwordlessStart(options, err => cb(normalizeError(err)));
   }
 
-  parseHash(lockID, hash) {
-    return this.clients[lockID].parseHash(hash);
+  parseHash(lockID, hash, cb) {
+    return this.clients[lockID].parseHash(hash, cb);
   }
 
   getProfile(lockID, token, callback) {
@@ -49,18 +61,18 @@ class Auth0WebAPI {
 
   getUserCountry(lockID, cb) {
     // TODO: This code belongs to Auth0.js
-    const protocol = "https:";
-    const domain = this.clients[lockID]._domain;
-    const endpoint = "/user/geoloc/country";
+    const protocol = 'https:';
+    const domain = this.clients[lockID].baseOptions.domain;
+    const endpoint = '/user/geoloc/country';
     const url = joinUrl(protocol, domain, endpoint);
 
     reqwest({
       url: same_origin(protocol, domain) ? endpoint : url,
-      method: "get",
-      type: "json",
+      method: 'get',
+      type: 'json',
       crossOrigin: !same_origin(protocol, domain),
-      success: (res) => cb(null, res.country_code),
-      error: (err) => cb(err)
+      success: res => cb(null, res.country_code),
+      error: err => cb(err)
     });
   }
 }
@@ -72,13 +84,12 @@ function normalizeError(error) {
     return error;
   }
 
-
   // TODO: the following checks were copied from https://github.com/auth0/lock/blob/0a5abf1957c9bb746b0710b274d0feed9b399958/index.js#L1263-L1288
   // Some of the checks are missing because I couldn't reproduce them and I'm
   // affraid they'll break existent functionality if add them.
   // We need a better errror handling story in auth0.js.
 
-  if (error.status === "User closed the popup window") {
+  if (error.status === 'User closed the popup window') {
     // {
     //   status: "User closed the popup window",
     //   name: undefined,
@@ -89,12 +100,12 @@ function normalizeError(error) {
     //   }
     // }
     return {
-      error: "lock.popup_closed",
-      description: "Popup window closed."
+      error: 'lock.popup_closed',
+      description: 'Popup window closed.'
     };
   }
 
-  if (error.message === 'access_denied' || error.code === "unauthorized") {
+  if (error.message === 'access_denied' || error.code === 'unauthorized') {
     // NOTE: couldn't reproduce for error.message === 'access_denied' and can't
     // see the difference between the two.
 
@@ -109,44 +120,23 @@ function normalizeError(error) {
     //   status: 401
     // }
     return {
-      error: "lock.unauthorized",
-      description: "Permissions were not granted."
-    }
+      error: 'lock.unauthorized',
+      description: 'Permissions were not granted.'
+    };
   }
 
   return {
-    error: error.details ? error.details.error : (error.statusCode || error.error),
-    description: error.details ? error.details.error_description : (error.error_description || error.error)
-  }
-}
-
-// The properties callbackOnLocationHash, callbackURL, and forceJSONP can only
-// be specified when counstructing an Auth0 instance. Unfortunately we construct
-// the Auth0 client along with the Lock and we don't have the values of those
-// options until later when the Lock is shown. While today we may construct the
-// client here, in the future that will not be possible becasue we will need to
-// retrieve some client information before before we can show the Lock.
-function transferLoginOptionsToClient(client, options) {
-  const { callbackURL, forceJSONP, redirect, responseType } = options;
-
-  client._callbackOnLocationHash = responseType === "token";
-  client._callbackURL = callbackURL || client._callbackURL;
-  client._shouldRedirect = redirect || responseType === "code" || !!callbackURL;
-  client._useJSONP = forceJSONP;
-
-  delete options.callbackURL;
-  delete options.forceJSONP;
-  delete options.responseType;
+    error: error.details ? error.details.error : error.statusCode || error.error,
+    description: error.details
+      ? error.details.error_description
+      : error.error_description || error.error
+  };
 }
 
 function loginCallback(redirect, cb) {
-  if (redirect) {
-    return error => cb(normalizeError(error));
-  } else {
-    return (error, profile, idToken, accessToken, state, refreshToken) => {
-      cb(normalizeError(error), profile, idToken, accessToken, state, refreshToken);
-    }
-  }
+  return (error, profile, idToken, accessToken, state, refreshToken) => {
+    cb(normalizeError(error), profile, idToken, accessToken, state, refreshToken);
+  };
 }
 
 function joinUrl(protocol, domain, endpoint) {

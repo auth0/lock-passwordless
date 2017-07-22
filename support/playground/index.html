@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
   <title>Auth0 Lock Passwordless Playground</title>
@@ -15,6 +16,7 @@
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
+
 <body>
 
   <header class="site-header clearfix">
@@ -95,7 +97,7 @@
               <div class="form-group">
                 <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Client ID</label>
                 <div class="col-xs-12 col-sm-8 col-md-9 col-right">
-                  <input type="text" name="clientID" class="form-control" value="Gcs1jSu5FAFpDrPe0jrqGpfbTEkzCk15" placeholder="YOUR_APP_CLIENT_ID">
+                  <input type="text" name="clientID" class="form-control" value="VZUvmnj3pd9yNgq8BjX4YA8Km14jQ0PN" placeholder="YOUR_APP_CLIENT_ID">
                   <span class="help-block">Your Auth0 client ID.</span>
                 </div>
               </div>
@@ -103,7 +105,7 @@
               <div class="form-group form-group-last">
                 <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Domain</label>
                 <div class="col-xs-12 col-sm-8 col-md-9 col-right">
-                  <input type="text" name="domain" class="form-control" value="pwdlessdemo.auth0.com" placeholder="YOUR_DOMAIN.auth0.com">
+                  <input type="text" name="domain" class="form-control" value="brucke.auth0.com" placeholder="YOUR_DOMAIN.auth0.com">
                   <span class="help-block">Your Auth0 domain.</span>
                 </div>
               </div>
@@ -126,7 +128,8 @@
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active" id="ui-options">
 
-                    <p>The UI Options will help you customize the look and feel for your Passwordless Lock. Take a look at the <a href="https://github.com/auth0/lock-passwordless#ui-options" target="_blank">full spec</a> of options.</p>
+                    <p>The UI Options will help you customize the look and feel for your Passwordless Lock. Take a look at the
+                      <a href="https://github.com/auth0/lock-passwordless#ui-options" target="_blank">full spec</a> of options.</p>
 
                     <div class="form-group">
                       <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left">Connections</label>
@@ -256,7 +259,9 @@
 
                   <div role="tabpanel" class="tab-pane" id="auth-options">
 
-                    <p>The Authentication Options will allow you different ways of triggering the sign in and saving states for your user. Take a look at the <a href="https://github.com/auth0/lock-passwordless#authentication-options" target="_blank">full spec</a> of options.</p>
+                    <p>The Authentication Options will allow you different ways of triggering the sign in and saving states
+                      for your user. Take a look at the <a href="https://github.com/auth0/lock-passwordless#authentication-options"
+                        target="_blank">full spec</a> of options.</p>
 
                     <div class="form-group">
                       <label class="col-xs-12 col-sm-4 col-md-3 control-label col-left lines-2">Authentication Parameters</label>
@@ -322,8 +327,8 @@
               <div role="tabpanel" class="tab-pane active output-box" id="lock-code-panel">
                 <pre id="lock-code" class="js output-box"><code></code></pre>
               </div>
-               <div role="tabpanel" class="tab-pane output-box" id="output-panel">
-                 <pre id="output" class="js output-box"><code></code></pre>
+              <div role="tabpanel" class="tab-pane output-box" id="output-panel">
+                <pre id="output" class="js output-box"><code></code></pre>
               </div>
             </div>
           </div>
@@ -362,15 +367,15 @@ lock.{{method}}(options, function (...) {
 // You have successfuly authenticated
 {
   profile: {
-    iss: "{{ profile.iss }}",
-    sub: "{{ profile.sub }}",
-    aud: "{{ profile.aud }}",
-    exp: {{ profile.exp }},
-    iat: {{ profile.iat }}
+    iss: "{{ idTokenPayload.iss }}",
+    sub: "{{ idTokenPayload.sub }}",
+    aud: "{{ idTokenPayload.aud }}",
+    exp: {{ idTokenPayload.exp }},
+    iat: {{ idTokenPayload.iat }}
   },
-  id_token: "{{ id_token }}",
-  access_token: "{{ access_token }}",
-  refresh_token: "{{ refresh_token }}"
+  id_token: "{{ idToken }}",
+  access_token: "{{ accessToken }}",
+  refresh_token: "{{ refreshToken }}"
   state: "{{ state }}"
 }
     </textarea>
@@ -427,7 +432,7 @@ lock.{{method}}(options, function (...) {
               <h6>Contact</h6>
             </div>
             <div class="item"><a href="mailto:support@auth0.com">Email Us</a></div>
-            <div class="item item-text">10777 Main Street<br>Suite 204<br>Bellevue, WA   98004</div>
+            <div class="item item-text">10777 Main Street<br>Suite 204<br>Bellevue, WA 98004</div>
           </div>
           <div class="column no-heading">
             <div class="item item-phone-label">Sales</div>
@@ -440,8 +445,14 @@ lock.{{method}}(options, function (...) {
       <div class="colophon">
         <div class="column">
           <div class="social">
-            <div class="twitter"><iframe allowtransparency="true" frameborder="0" scrolling="no" src="//platform.twitter.com/widgets/follow_button.html?screen_name=auth0" class="twitter"></iframe></div>
-            <div class="facebook"><iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Ffacebook.com%2Fgetauth0&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;show_count=false&amp;share=false&amp;height=21&amp;appId=507756515938786" scrolling="no" frameborder="0" allowtransparency="true" class="facebook"></iframe></div>
+            <div class="twitter">
+              <iframe allowtransparency="true" frameborder="0" scrolling="no" src="//platform.twitter.com/widgets/follow_button.html?screen_name=auth0"
+                class="twitter"></iframe>
+            </div>
+            <div class="facebook">
+              <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Ffacebook.com%2Fgetauth0&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;show_count=false&amp;share=false&amp;height=21&amp;appId=507756515938786"
+                scrolling="no" frameborder="0" allowtransparency="true" class="facebook"></iframe>
+            </div>
           </div>
         </div>
         <div class="column">
@@ -465,4 +476,5 @@ lock.{{method}}(options, function (...) {
   <script type="text/javascript" src="index.js"></script>
 
 </body>
+
 </html>

@@ -29,16 +29,16 @@ if (style.styleSheet) {
 }
 
 export default class Auth0LockPasswordless {
-  constructor(clientID, domain) {
-    if (typeof clientID != "string") {
-      throw new Error("A `clientID` string must be provided as first argument.");
+  constructor(clientID, domain, options = {}) {
+    if (typeof clientID != 'string') {
+      throw new Error('A `clientID` string must be provided as first argument.');
     }
-    if (typeof domain != "string") {
-      throw new Error("A `domain` string must be provided as second argument.");
+    if (typeof domain != 'string') {
+      throw new Error('A `domain` string must be provided as second argument.');
     }
 
     this.id = idu.incremental();
-    setupLock(this.id, clientID, domain);
+    setupLock(this.id, clientID, domain, options);
   }
 
   close() {
@@ -54,8 +54,8 @@ export default class Auth0LockPasswordless {
     return webAPI.getProfile(this.id, token, cb);
   }
 
-  parseHash(hash) {
-    return webAPI.parseHash(this.id, hash);
+  parseHash(hash, cb) {
+    return webAPI.parseHash(this.id, hash, cb);
   }
 
   logout(query = {}) {
@@ -83,9 +83,5 @@ Auth0LockPasswordless.plugins.register(socialOrEmailcodeSpec);
 Auth0LockPasswordless.plugins.register(socialOrMagiclinkSpec);
 Auth0LockPasswordless.plugins.register(socialOrSmsSpec);
 
-
 // telemetry
 Auth0LockPasswordless.version = __VERSION__;
-Auth0.clientInfo.lib_version = Auth0.clientInfo.version;
-Auth0.clientInfo.name =  "lock-passwordless.js";
-Auth0.clientInfo.version = Auth0LockPasswordless.version;

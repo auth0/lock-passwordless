@@ -60,10 +60,10 @@
     "sinon": "^1.15.4",
     "unreleased": "^0.1.0",
     "zuul": "3.10.1",
-    "zuul-ngrok": "gnandretta/zuul-ngrok#upgrade-ngrok"
+    "zuul-ngrok": "4.0.0"
   },
   "dependencies": {
-    "auth0-js": "6.8.0",
+    "auth0-js": "^8.8.0",
     "blueimp-md5": "^1.1.0",
     "fbjs": "^0.3.1",
     "immutable": "^3.7.3",

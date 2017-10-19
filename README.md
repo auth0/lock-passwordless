@@ -10,6 +10,9 @@
 
 This library has been designed to work in a browser. Lock libraries for [iOS](https://github.com/auth0/Lock.iOS-OSX) and [Android](https://github.com/auth0/Lock.Android) which support passwordless authentication are also available.
 
+## Legacy Grants
+We're working to join [lock](https://github.com/auth0/lock) and lock-passwordless in the same project so we can move faster with both projects. In the mean time, new customers using lock-passwordless **outside** of the [Hosted Login Page](https://auth0.com/docs/hosted-pages/login) will see an authorization error about unallowed claims. To fix this, you either start using the Hosted Login Page or you'll have to enable those grants manually in your client. More info here: https://auth0.com/docs/clients/client-grant-types#information-for-existing-and-new-auth0-customers
+
 ## Playground
 
 You can try it out yourself online at the [playground](https://auth0.github.io/lock-passwordless/).

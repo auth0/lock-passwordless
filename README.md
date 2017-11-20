@@ -201,7 +201,7 @@ lock.emailcode({callbackURL: "http://mydomain/callback"});
 
 ### .sms(options, callback)
 
-Opens a dialog that asks the user for a phone number. Then, it will ask for a _code_ that has been sent in an text message to the given number. The code will be used as a one-time password to log in.
+Opens a dialog that asks the user for a phone number. Then, it will ask for a _code_ that has been sent in a text message to the given number. The code will be used as a one-time password to log in.
 
 - **options {Object}**: Allows to customize the dialog's appearance and behavior. See [below](#customization) for the details.
 - **callback {Function}**: Will be invoked after an attempt to log the user in has been made.
@@ -284,7 +284,7 @@ lock.socialOrEmailcode({
 
 ### .socialOrSms(options, callback)
 
-Opens a dialog that is a combination of `social` and `sms`. It will display buttons to authenticate with the specified social providers and at the same time will ask the user for a phone number. When the phone number is entered, it will send the _code_ in an text message that serves as a one-time password to log in.
+Opens a dialog that is a combination of `social` and `sms`. It will display buttons to authenticate with the specified social providers and at the same time will ask the user for a phone number. When the phone number is entered, it will send the _code_ in a text message that serves as a one-time password to log in.
 
 - **options {Object}**: Allows to customize the dialog's appearance and behavior. The `connections` options must always be present. See [below](#customization) for the details.
 - **callback {Function}**: Will be invoked only in popup mode which is discouraged. See [below](#popup-mode) for the caveats.

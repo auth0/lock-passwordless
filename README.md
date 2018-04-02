@@ -1,4 +1,4 @@
-# This project is deprecated and is not maintened anymore
+# This project is deprecated and is not maintained anymore
 We wrote a [migration guide](https://auth0.com/docs/libraries/lock/v11/migration-lock-passwordless) showing how you can migrate from lock-passwordless to the new [Lock with Passwordless mode](https://github.com/auth0/lock#new-auth0lockpasswordlessclientid-domain-options). If you're encoutering issues, please reach out to our amazing support team at https://support.auth0.com or open [an issue in the new repo](https://github.com/auth0/lock/issues).
 
 

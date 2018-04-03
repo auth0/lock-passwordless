@@ -1,3 +1,8 @@
+# This project is deprecated and is not maintained anymore
+If you have used lock-passwordless in the past, a migration guide to Lock with Passwordless Mode is available [here](https://auth0.com/docs/libraries/lock/v11/migration-lock-passwordless).
+If you have any issues, please reach out to our amazing support team at https://support.auth0.com.
+
+
 # Lock Passwordless
 
 [![NPM version][npm-image]][npm-url]
